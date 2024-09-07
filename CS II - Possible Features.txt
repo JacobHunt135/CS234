@@ -1,6 +1,6 @@
 CS II Meeting
 
-Login system ( users, password )
-Item Browser ( Item name, item price )
-Purchasing Items ( take user to a purchase screen )
-Discount System ( probably store per user )
+Login system ( users, password ) -- in pdf
+Item Browser ( Item name, item price ) -- in pdf
+Purchasing Items ( take user to a purchase screen ) -- in pdf
+Discount System ( probably store per user ) -- in pdf
