@@ -1,0 +1,8 @@
+Worked on the classes "Staff" and "Profiles"
+added private variables for "Staff" class as well as an array
+added constructors for "Staff" class
+added setters and getters for "Staff" class
+added private array for "Profiles" class
+added constructor for "Profiles" class
+added menu options and their respective roles for "Profiles" class
+added authentication checker method for "Profiles" class
