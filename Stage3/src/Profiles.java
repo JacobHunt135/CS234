@@ -18,7 +18,7 @@ public class Profiles {
         String option;
         
         do{
-            System.out.println("Profile Menu");
+            System.out.println("~~~Profile Menu~~~");
             String choice = in.next();
             option = choice;
             
