@@ -15,6 +15,25 @@ public class Profiles {
     
     public static void menu() {
         Scanner in = new Scanner(System.in);
+        String option;
+        
+        do{
+            System.out.println("Profile Menu");
+            String choice = in.next();
+            option = choice;
+            
+            switch(choice) {
+                case "1":
+                    break;
+                case "2":
+                    break;
+                default:
+                    System.out.println("Invalid option");
+                    break;
+            }
+        } while (option != "1" && option != "2");
     }
+    
+    
     
 }

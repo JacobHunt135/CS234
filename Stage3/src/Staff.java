@@ -6,7 +6,10 @@ public class Staff {
     private float wage;
     
     public Staff(int authority, String name, String position, float wage){
-        
+        this.authority = authority;
+        this.name = name;
+        this.position = position;
+        this.wage = wage;
     }
     
 }
