@@ -18,7 +18,13 @@ public class Profiles {
         String option;
         
         do{
-            System.out.println("~~~Profile Menu~~~");
+            System.out.println("~~~Profile Menu~~~\n");
+            System.out.println("""
+                               1. Authority
+                               2. Name
+                               3. Position
+                               4. Wage
+                               """);
             String choice = in.next();
             option = choice;
             
@@ -28,12 +34,18 @@ public class Profiles {
                 case "2":
                     break;
                 default:
-                    System.out.println("Invalid option");
+                    System.out.println("Invalid option. Try again");
                     break;
             }
         } while (option != "1" && option != "2");
     }
     
-    
+    public static boolean checkAuth(Staff aStaff, int authCompare) {
+        if(aStaff.getAuth() == authCompare) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     
 }
