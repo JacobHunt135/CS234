@@ -19,10 +19,10 @@ public class Profiles {
     
     public static void menu() {
         Scanner in = new Scanner(System.in);
-        String option;
+        String option = "0";
         
         //Temp menu setup.
-        do{
+        while (option != "7") {
             System.out.println("~~~Profile Menu~~~\n");
             System.out.println("""
                                1. Check Authority
@@ -56,7 +56,7 @@ public class Profiles {
                     System.out.println("Invalid option. Try again");
                     break;
             }
-        } while (option != "1" && option != "2" && option != "3" && option != "4" && option != "5" && option != "6" && option != "7");
+        }
     }
     
     public static boolean checkAuth(Staff aStaff, int authCompare) {
