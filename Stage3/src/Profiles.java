@@ -59,14 +59,13 @@ public class Profiles {
         }
     }
     
+    /*
+    0 - admin
+    1 - employee
+    2 - observer
+    */
     public static boolean checkAuth(Staff aStaff, int authCompare) {
-        //Changed how the authority is checked to be simpler.
         return aStaff.getAuth() == authCompare;
-//        if(aStaff.getAuth() == authCompare) {
-//            return true;
-//        } else {
-//            return false;
-//        }
     }
     
     //Attempting to implement IDs since using names might cause issues.
@@ -80,6 +79,10 @@ public class Profiles {
         } else {
             System.out.println("INVALID ID");
         }
+    }
+    
+    public void option2 (Staff aStaff) {
+        
     }
     
 }
