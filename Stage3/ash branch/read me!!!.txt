@@ -1,0 +1,1 @@
+hi, i decided not to put this into the main folder of the branch, and put it here instead so you guys can just double check stuff and edit it here before we fully commit to any of the code here.
