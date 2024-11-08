@@ -68,21 +68,4 @@ public class Profiles {
         return aStaff.getAuth() == authCompare;
     }
     
-    //Attempting to implement IDs since using names might cause issues.
-    public void option1(Staff aStaff) {
-        Scanner IDGet = new Scanner(System.in);
-        System.out.println("What is the name of the person you want to check their authority: ");
-        int ID = IDGet.nextInt();
-        
-        if (ID == aStaff.getID()) {
-            System.out.println("The person's authority level is: " + aStaff.getAuth());
-        } else {
-            System.out.println("INVALID ID");
-        }
-    }
-    
-    public void option2 (Staff aStaff) {
-        
-    }
-    
 }
