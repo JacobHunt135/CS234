@@ -1,71 +1,55 @@
 import java.util.Scanner;
 
 public class Store {
-    public static int AUTH_REQ_STOCK = 2;
-    public static int AUTH_REQ_ORDER = 2;
 
-    public static Inventory storeInventory = new Inventory();
     public static Scanner scan = new Scanner(System.in);
 
-    public static void option1() {
-        storeInventory.displayInfo();
-    }
-
-    public static void option2() {
-        Purchase.readNext();
-    }
-
-    public static void option3() {
-        Purchase.readPrev();
-    }
-
-    public static void menu() {
-        System.out.println("""
-            1. Display inventory")
-            2. Read next purchase")
-            3. Read previous purchase")
-            4. Exit")
-            """);
-        int choice = 0;
-        while (choice != 4 ) {
-
-            choice = scan.nextInt();
-            switch (choice) {
-                case 1:
-                    option1();
-                    break;
-                case 2:
-                    option2();
-                    break;
-                case 3:
-                    option3();
-                    break;
-                case 4:
-                    //scan.close();
-                    return;
-                default:
-                    System.out.println("Invalid option.");
-                    break;
-            }
-            menu();
+    private static void optionStock(){
+        if (! Main.CURRENT_PROFILE.checkAuthority(Main.AUTH_REQ_STOCK)){
+            System.out.println("Insufficient Authority...");
+        } else {
+            Inventory.menu();
         }
     }
 
-    /* 
-    
-    public static void main(String[] args) {
-
-        storeInventory.addItem("Wrench", "Shelf A3", 17, 3);
-        storeInventory.addItem("Screwdriver", "Shelf A2", 11, 4);
-        storeInventory.addItem("Tape", "Shelf C3", 6, 2);
-        storeInventory.addItem("Bolts", "Shelf D6", 300, 1);
-
-        //Purchase purchase = new Purchase(001, "achterbt", "11/1/24", "Wrench", 70, 340000);
-        //purchase.displayInfo();
-
-        Purchase.loadPurchases();
-
-        menu();
+    private static void optionOrder(){
+        if (! Main.CURRENT_PROFILE.checkAuthority(Main.AUTH_REQ_ORDER)){
+            System.out.println("Insufficient Authority...");
+        } else {
+            Purchase.menu();
+        }
     }
-    */
+
+    public static void menu() {
+
+        int user_input = -1;
+
+        /**
+         * Enter a do-while loop to always show menu options as long as we dont choose to exit.
+         */
+        do{
+            System.out.println("""
+                \n~~~ store menu ~~~
+                1. Inventory screen
+                2. Order screen
+                3. Return to main menu
+                """);
+            
+            user_input = scan.nextInt();
+
+            switch(user_input) {
+                case 1: // display inventory / stock menu
+                    optionStock();
+                    break;
+                case 2: // display purchase history / order menu
+                    optionOrder();
+                    break;
+                case 3: // back to menu
+                    // scan.close();
+                    System.out.println("\n<--");
+                    break;
+            }
+        } while(user_input != 3);
+        // scanner.close();
+    }
 }

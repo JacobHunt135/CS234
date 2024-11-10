@@ -17,7 +17,13 @@ public class Profile {
             return false;
         }
     }
+        
+    // authority check
+    public boolean checkAuthority(int authorityRequired){
+        return authority <= authorityRequired;
+    }
 
+    // getter methods
     public String getUsername() {
         return username;
     }
@@ -28,6 +34,7 @@ public class Profile {
         return authority;
     }
 
+    // setter methods
     public void setUsername(String username) {
         this.username = username;
     }
