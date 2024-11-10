@@ -1,0 +1,6 @@
+1, joseju, 8/7/24, "Screwdriver", 44, 22000, 
+2, joseju, 8/7/24, "Tape", 37, 11000, 
+3, achterbt, 9/16/24, "Wrench", 4700, 360, 
+4, achterbt, 9/17/24, "Thermonuclear Warhead", 6, 5000000, 
+5, achterbt, 10/11/24, "Screwdriver", 1, 40, 
+6, achterbt, 2024-11-10, Jognle, 600, 7, 
