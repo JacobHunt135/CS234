@@ -1,9 +1,6 @@
 import java.util.Scanner;
 
-public class Store {
-    public static int AUTH_REQ_STOCK = 2;
-    public static int AUTH_REQ_ORDER = 2;
-
+public class Tester {
     public static Inventory storeInventory = new Inventory();
     public static Scanner scan = new Scanner(System.in);
 
@@ -41,7 +38,7 @@ public class Store {
                     option3();
                     break;
                 case 4:
-                    //scan.close();
+                    scan.close();
                     return;
                 default:
                     System.out.println("Invalid option.");
@@ -51,8 +48,6 @@ public class Store {
         }
     }
 
-    /* 
-    
     public static void main(String[] args) {
 
         storeInventory.addItem("Wrench", "Shelf A3", 17, 3);
@@ -67,5 +62,4 @@ public class Store {
 
         menu();
     }
-    */
 }
