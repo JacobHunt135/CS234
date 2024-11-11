@@ -1,0 +1,2 @@
+Worked on general programming. Tweaked systems and integrated the seperate codebases into each other.
+I mostly worked locally and pushed my changes to a seprate branch, so my git-blame history is mostly empty
