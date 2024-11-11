@@ -1,3 +1,4 @@
+//Imports.
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -7,9 +8,13 @@ import java.util.Scanner;
         
 public class Staff {
 
+    //Initializing Scanner and ArrayList.
     public static Scanner scan = new Scanner(System.in);
     private static ArrayList<Employee> employees;
 
+    /* Two methods to display info of an eployee. One displays all employees'
+    *  information, while the other displays a specific person's information.
+    */
     //---------------------------------------------------------------------
     public static void displayInfo() {
         System.out.printf("%20s", "[NAME] | ");
@@ -36,6 +41,7 @@ public class Staff {
     }
     //---------------------------------------------------------------------
 
+    //Loads the Staff.txt file and displays an error when they're not found.
     public static void loadStaff() {
         employees = new ArrayList<Employee>();
 
@@ -60,6 +66,7 @@ public class Staff {
         }
     }
 
+    //Updates the Staff.txt file with new information and displays an error when unable.
     public static void updateStaff() {
         try {
             FileWriter writer = new FileWriter("Staff.txt");
@@ -82,6 +89,7 @@ public class Staff {
         }
     }
     
+    //Adds a new employee.
     public static void addEmp() {
         if (! Main.CURRENT_PROFILE.checkAuthority(Main.AUTH_REQ_STAFF)){
             System.out.println("Insufficient Authority...");
@@ -100,6 +108,7 @@ public class Staff {
         }
     }
     
+    //Removes an existing employee.
     public static void removeEmp() {
         if (! Main.CURRENT_PROFILE.checkAuthority(Main.AUTH_REQ_STAFF)){
             System.out.println("Insufficient Authority...");
@@ -116,6 +125,7 @@ public class Staff {
         }
     }
 
+    //Edits an existing employee.
     public static void editEmp() {
         scan.nextLine(); // collects any garbage input
 
@@ -149,7 +159,7 @@ public class Staff {
         int user_input = -1;
 
         /**
-         * Enter a do-while loop to always show menu options as long as we dont choose to exit.
+         * Enter a do-while loop to always show menu options as long as we don't choose to exit.
          */
         do{
             System.out.println("""
@@ -186,27 +196,4 @@ public class Staff {
 
         updateStaff();
     }
-    
-    // public static boolean checkAuth(Staff aStaff, int authCompare) {
-        //Changed how the authority is checked to be simpler.
-        // return aStaff.getAuth() == authCompare;
-//        if(aStaff.getAuth() == authCompare) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-    }
-    
-    //Attempting to implement IDs since using names might cause issues.
-    // public void option1(Staff aStaff) {
-    //     Scanner IDGet = new Scanner(System.in);
-    //     System.out.println("What is the name of the person you want to check their authority: ");
-    //     int ID = IDGet.nextInt();
-        
-    //     if (ID == aStaff.getID()) {
-    //         System.out.println("The person's authority level is: " + aStaff.getAuth());
-    //     } else {
-    //         System.out.println("INVALID ID");
-    //     }
-    // }
-    
+}

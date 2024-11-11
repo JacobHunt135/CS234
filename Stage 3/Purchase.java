@@ -1,7 +1,7 @@
+//Imports.
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.time.LocalDate;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Purchase  {
-
+//Initializes LinkedList, iterator, purchases, scanner, and ID.
     private static LinkedList<Purchase> purchaseHistory = new LinkedList<Purchase>();
     private static ListIterator<Purchase> iterator;
     private static Purchase currentPurchase;
@@ -24,6 +24,7 @@ public class Purchase  {
     private int amount;
     private int cost;
 
+    //Loads the PurchaseHistory.txt file.
     public static void loadPurchases() {
         try {
             File file = new File("PurchaseHistory.txt");
@@ -54,6 +55,7 @@ public class Purchase  {
         }
     }
 
+    //Updates the PurchaseHistory.txt file.
     public static void updatePurchases() {
         try {
             FileWriter writer = new FileWriter("PurchaseHistory.txt");
@@ -79,6 +81,7 @@ public class Purchase  {
         }
     }
 
+    //Displays the pruchase before the iterator.
     public static void readPrev() {
         if (iterator.hasPrevious()) {
             if (iterator.previous().getID() == currentPurchase.getID()) {
@@ -90,6 +93,7 @@ public class Purchase  {
         }
     }
 
+    //Displays the purchase at the iterator.
     public static void readNext() {
         if (iterator.hasNext()) {
             currentPurchase = iterator.next();
@@ -99,6 +103,7 @@ public class Purchase  {
         }
     }
 
+    //Creates an order for a purchase.
     public static void makeOrder() {
         scan.nextLine(); // collects any garbage input
 
@@ -116,7 +121,7 @@ public class Purchase  {
         iterator = purchaseHistory.listIterator();
     }
 
-
+    //Constructor for a purchase.
     public Purchase(int id, String user, String date, String item, int amount, int cost) {
         this.id = id;
         this.user = user;
@@ -126,6 +131,7 @@ public class Purchase  {
         this.cost = cost;
     }
 
+    //Displays info of a purchase.
     public void displayInfo() {
         System.out.printf(
                 "[[ ORDER "+ id + " ]]" + "\n"+
@@ -137,6 +143,7 @@ public class Purchase  {
         );
     }
 
+    //Getters for purchases.
     public int getID() {
         return this.id;
     }
@@ -156,6 +163,7 @@ public class Purchase  {
         return this.cost;
     }
 
+    //Menu to navigate purchases.
     public static void menu() {
         loadPurchases();
         int user_input = -1;

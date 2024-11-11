@@ -1,0 +1,2 @@
+Worked on and populated Staff and Profiles classes.
+added documentation to the program.
