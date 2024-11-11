@@ -1,3 +1,4 @@
+//Imports.
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -7,9 +8,13 @@ import java.util.Scanner;
         
 public class Staff {
 
+    //Initializing Scanner and ArrayList.
     public static Scanner scan = new Scanner(System.in);
     private static ArrayList<Employee> employees;
 
+    /* Two methods to display info of an eployee. One displays all employees'
+    *  information, while the other displays a specific person's information.
+    */
     //---------------------------------------------------------------------
     public static void displayInfo() {
         System.out.printf("%20s", "[NAME] | ");
@@ -36,6 +41,7 @@ public class Staff {
     }
     //---------------------------------------------------------------------
 
+    
     public static void loadStaff() {
         employees = new ArrayList<Employee>();
 
