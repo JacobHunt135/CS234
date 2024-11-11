@@ -1,0 +1,5 @@
+# Developed and implemented the Store, Inventory, Item, and Purchase classes.
+# Implemented read/write and CRUD functions for the Inventory and Purchase classes.
+# Wrote the Profile-related functions of the Main class (login, profile CRUD, file read/write).
+# Renamed the prior Staff class to Employee, and the prior Purchases class to Staff to avoid confusion with the Purchase class.
+# Created system guide.
