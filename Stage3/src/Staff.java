@@ -148,52 +148,5 @@ public class Staff {
         // should only run if the inputted name matches none of the employees
         System.out.println("No such employee found.");
     }
-    
-    /*
-     * options
-     * -> 
-     */
 
-    public static void menu() {
-        loadStaff();
-        int user_input = -1;
-
-        /**
-         * Enter a do-while loop to always show menu options as long as we don't choose to exit.
-         */
-        do{
-            System.out.println("""
-                \n~~~Staff Menu~~~
-                1. Display Staff
-                2. Add Staff
-                3. Remove Staff
-                4. Edit Staff
-                5. Return to Main Menu
-                """);
-            
-            user_input = scan.nextInt();
-
-            switch(user_input) {
-                case 1: // display inventory / stock menu
-                    displayInfo();
-                    break;
-                case 2: // add item
-                    addEmp();
-                    break;
-                case 3: // remove item
-                    removeEmp();
-                    break;
-                case 4: // edit item
-                    editEmp();
-                    break;
-                case 5: // back to store menu
-                    // scan.close();
-                    System.out.println("\n<--");
-                    break;
-            }
-        } while(user_input != 5);
-        // scanner.close();
-
-        updateStaff();
-    }
 }

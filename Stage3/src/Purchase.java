@@ -163,43 +163,4 @@ public class Purchase  {
         return this.cost;
     }
 
-    //Menu to navigate purchases.
-    public static void menu() {
-        loadPurchases();
-        int user_input = -1;
-
-        /**
-         * Enter a do-while loop to always show menu options as long as we dont choose to exit.
-         */
-        do{
-            System.out.println("""
-                \n~~~ Purchases ~~~
-                1. Display next purchase
-                2. Display previous purchase
-                3. Make an order
-                4. Return to Store menu
-                """);
-            
-            user_input = scan.nextInt();
-
-            switch(user_input) {
-                case 1: // read next purchase
-                    readNext();
-                    break;
-                case 2: // read previous purchase
-                    readPrev();
-                    break;
-                case 3: // make a new purchase
-                    makeOrder();
-                    break;
-                case 4: // back to store menu
-                    // scan.close();
-                    System.out.println("\n<--");
-                    break;
-            }
-        } while(user_input != 4);
-        // scanner.close();
-
-        updatePurchases();
-    }
 }

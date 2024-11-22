@@ -158,47 +158,4 @@ public class Inventory {
         System.out.println("No such item found.");
     }
 
-    //Menu for navigating and displaying the inventory.
-    public static void menu() {
-        loadInventory();
-        int user_input = -1;
-
-        /**
-         * Enter a do-while loop to always show menu options as long as we dont choose to exit.
-         */
-        do{
-            System.out.println("""
-                \n~~~ Inventory ~~~
-                1. Display Inventory
-                2. Add Item
-                3. Remove Item
-                4. Edit Item
-                5. Return to Store menu
-                """);
-            
-            user_input = scan.nextInt();
-
-            switch(user_input) {
-                case 1: // display inventory / stock menu
-                    displayInfo();
-                    break;
-                case 2: // add item
-                    addItem();
-                    break;
-                case 3: // remove item
-                    removeItem();
-                    break;
-                case 4: // edit item
-                    editItem();
-                    break;
-                case 5: // back to store menu
-                    // scan.close();
-                    System.out.println("\n<--");
-                    break;
-            }
-        } while(user_input != 5);
-        // scanner.close();
-
-        updateInventory();
-    }
 }
