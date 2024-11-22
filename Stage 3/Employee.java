@@ -4,7 +4,6 @@ public class Employee {
     private String position;
     private float wage;
 
-    //Constructor for a new employee.
     public Employee(String name, String position, float wage){
         this.name = name;
         this.position = position;

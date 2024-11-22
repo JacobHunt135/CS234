@@ -1,7 +1,7 @@
-//Imports.
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.time.LocalDate;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Purchase  {
-//Initializes LinkedList, iterator, purchases, scanner, and ID.
+
     private static LinkedList<Purchase> purchaseHistory = new LinkedList<Purchase>();
     private static ListIterator<Purchase> iterator;
     private static Purchase currentPurchase;
@@ -17,6 +17,7 @@ public class Purchase  {
 
     public static Scanner scan = new Scanner(System.in);
 
+    //-------------------------------------------------------------------------------------------
     private int id;
     private String user;
     private String date;
@@ -24,10 +25,22 @@ public class Purchase  {
     private int amount;
     private int cost;
 
-    //Loads the PurchaseHistory.txt file.
+    public void setItem(String itemName) {
+        this.item = itemName;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+    //-------------------------------------------------------------------------------------------
+
     public static void loadPurchases() {
         try {
-            File file = new File("PurchaseHistory.txt");
+            File file = new File(Main.CURRENT_DIRECTORY + "\\PurchaseHistory.txt");
             Scanner scan = new Scanner(file);
 
             while (scan.hasNextLine()) {
@@ -55,7 +68,6 @@ public class Purchase  {
         }
     }
 
-    //Updates the PurchaseHistory.txt file.
     public static void updatePurchases() {
         try {
             FileWriter writer = new FileWriter("PurchaseHistory.txt");
@@ -81,19 +93,21 @@ public class Purchase  {
         }
     }
 
-    //Displays the pruchase before the iterator.
+    /*
     public static void readPrev() {
         if (iterator.hasPrevious()) {
-            if (iterator.previous().getID() == currentPurchase.getID()) {
+            if (iterator.previous().getID() == currentPurchase.getID() && iterator.hasPrevious() ) {
                 currentPurchase = iterator.previous();
+            } else {
+                System.out.println("Reached beginning of purchase history.");
             }
             currentPurchase.displayInfo();
         } else {
             System.out.println("Reached beginning of purchase history.");
         }
     }
+     */
 
-    //Displays the purchase at the iterator.
     public static void readNext() {
         if (iterator.hasNext()) {
             currentPurchase = iterator.next();
@@ -103,7 +117,6 @@ public class Purchase  {
         }
     }
 
-    //Creates an order for a purchase.
     public static void makeOrder() {
         scan.nextLine(); // collects any garbage input
 
@@ -121,7 +134,32 @@ public class Purchase  {
         iterator = purchaseHistory.listIterator();
     }
 
-    //Constructor for a purchase.
+    public static void removeOrder() {
+        if (currentPurchase != null) {
+            purchaseHistory.remove(currentPurchase);
+            iterator = purchaseHistory.listIterator();
+        } else {
+            System.out.println("No current purchase to remove.");
+        }
+    }
+
+    public static void editOrder() {
+
+        System.out.print("[ID, USER, AND DATE CANNOT BE CHANGED]");
+
+        System.out.print("Set new name of item ordered: ");
+        currentPurchase.setItem(scan.nextLine());
+        System.out.print("Set amount ordered: ");
+        currentPurchase.setAmount(scan.nextInt());
+        System.out.print("Set cost of the order: ");
+        currentPurchase.setCost(scan.nextInt());
+
+        // should only run if the inputted name matches none of the items
+        System.out.println("No such item found.");
+    }
+
+
+
     public Purchase(int id, String user, String date, String item, int amount, int cost) {
         this.id = id;
         this.user = user;
@@ -131,7 +169,6 @@ public class Purchase  {
         this.cost = cost;
     }
 
-    //Displays info of a purchase.
     public void displayInfo() {
         System.out.printf(
                 "[[ ORDER "+ id + " ]]" + "\n"+
@@ -143,7 +180,6 @@ public class Purchase  {
         );
     }
 
-    //Getters for purchases.
     public int getID() {
         return this.id;
     }
@@ -163,7 +199,6 @@ public class Purchase  {
         return this.cost;
     }
 
-    //Menu to navigate purchases.
     public static void menu() {
         loadPurchases();
         int user_input = -1;
@@ -177,6 +212,8 @@ public class Purchase  {
                 1. Display next purchase
                 2. Display previous purchase
                 3. Make an order
+                4. Edit current order
+                5. Delete current order
                 4. Return to Store menu
                 """);
             
@@ -187,17 +224,23 @@ public class Purchase  {
                     readNext();
                     break;
                 case 2: // read previous purchase
-                    readPrev();
+                    //readPrev();
                     break;
                 case 3: // make a new purchase
                     makeOrder();
                     break;
-                case 4: // back to store menu
+                case 4: // edit current purchase
+                    editOrder();
+                    break;
+                case 5: // remove current purchase
+                    removeOrder();
+                    break;
+                case 6: // back to store menu
                     // scan.close();
                     System.out.println("\n<--");
                     break;
             }
-        } while(user_input != 4);
+        } while(user_input != 6);
         // scanner.close();
 
         updatePurchases();

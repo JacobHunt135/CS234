@@ -1,11 +1,10 @@
-//Imports.
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.LinkedList;
 
+import java.util.LinkedList;
 public class Main  {
 
     //---------------------------------------------------------------
@@ -14,6 +13,7 @@ public class Main  {
      *  1 <- Employee
      *  2 <- Observer
      */
+    public static String CURRENT_DIRECTORY = System.getProperty("user.dir");
     public static Profile CURRENT_PROFILE;
 
     public static int AUTH_REQ_STOCK = 2;
@@ -24,17 +24,12 @@ public class Main  {
     public static final int ADMIN_AUTH_LEVEL = 0;
     //---------------------------------------------------------------
 
-    //Initializing scanner and LinkedList.
     private static Scanner scan = new Scanner(System.in);
     private static LinkedList<Profile> profiles = new LinkedList<Profile>();
     
-    /* Method that finds and reads a .txt file in the same folder to access
-    *  who is in the database. If there is no .txt file, it Prints a message
-    *  saying such.
-    */
     public static void loadProfiles() {
         try {
-            File file = new File("Profiles.txt");
+            File file = new File(CURRENT_DIRECTORY + "\\Profiles.txt");
             Scanner scan = new Scanner(file);
 
             while (scan.hasNextLine()) {
@@ -53,9 +48,6 @@ public class Main  {
         }
     }
 
-    /* Method that updates the Profiles.txt with new information and prints an
-    *  error message if an error has occured.
-    */
     public static void updateProfiles() {
         try {
             FileWriter writer = new FileWriter("Profiles.txt");
@@ -82,12 +74,8 @@ public class Main  {
     final static int CHOICE_LOGIN_RETURN_TO_LOGIN = 1;
     final static int CHOICE_LOGIN_EXIT = 2;
 
-    /* Initial login to the program that uses the info int the Profiles.txt
-    *  file to determine if a user is with the store. If an incorrect username
-    *  or password is given, then options to exit the program or to try again
-    *  are presented to the user.
-    */
     public static void login() {
+        // maybe we can use a static scanner here instead?
         Scanner scan = new Scanner(System.in);
 
         String username;
@@ -142,7 +130,6 @@ public class Main  {
     }
     //---------------------------------------------------------------------
 
-    //Adds a new profile to the Profiles.txt file through the Profile class.
     public static void addProfile() {
         scan.nextLine(); // collects any garbage input
 
@@ -160,7 +147,6 @@ public class Main  {
         profiles.add(new Profile(username, password, auth));
     }
 
-    //Removes a profile from the Profiles.txt file through the Profile class.
     public static void removeProfile() {
         scan.nextLine(); // collects any garbage input
 
@@ -176,9 +162,6 @@ public class Main  {
         }
     }
 
-    /* Enables the user to edit profiles other than the administrator account.
-    *  Only the username, password, and authority level can be changed.
-    */
     public static void editProfile() {
         scan.nextLine(); // collects any garbage input
 
@@ -204,15 +187,15 @@ public class Main  {
             }
         }
 
+        // should only run if the inputted name matches none of the items
         System.out.println("No such profile found.");
     }
 
-    //Menu for the profiles.
     public static void profileMenu() {
         int user_input = -1;
 
         /**
-         * Enter a do-while loop to always show menu options as long as we don't choose
+         * Enter a do-while loop to always show menu options as long as we dont choose
          */
         do {
             System.out.println("""
@@ -248,6 +231,9 @@ public class Main  {
             }
         } while(user_input != 5);
     }
+    //------------------------------------------------------------------------------------
+    //
+    //------------------------------------------------------------------------------------
 
     // Choice constants
     static final int CHOICE_MENU_STORE = 1;        
@@ -304,8 +290,10 @@ public class Main  {
         scan.close();
     }
 
-    //Main method to load the profiles and initialize login.
     public static void main(String[] args) {
+        String dir = System.getProperty("user.dir");
+        System.out.println("current dir = " + dir);
+
         loadProfiles();
         login();
     }

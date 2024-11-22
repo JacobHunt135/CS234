@@ -5,7 +5,6 @@ public class Item {
     private int stock;
     private int unitPrice;
 
-    //Constructor for a new item.
     public Item(String name, String location, int stock, int unitPrice) {
         this.name = name;
         this.location = location;
@@ -13,7 +12,6 @@ public class Item {
         this.unitPrice = unitPrice;
     }
 
-    //Getters for an item.
     public String getName() {
         return name;
     }
@@ -27,7 +25,6 @@ public class Item {
         return unitPrice;
     }
 
-    //Setters for an item.
     public void setName(String name) {
         this.name = name;
     }

@@ -1,4 +1,3 @@
-//Imports.
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -8,14 +7,9 @@ import java.util.Scanner;
 
 public class Inventory {
 
-    //Initializing scanner and ArrayList.
     public static Scanner scan = new Scanner(System.in);
     private static ArrayList<Item> inventory;
 
-    /* Two methods to display the info of an item. One of them displays the
-    *  information of all items while the other displays information for a
-    *  specific item.
-    */
     //---------------------------------------------------------------------
     public static void displayInfo() {
         System.out.printf("%20s", "[NAME] | ");
@@ -49,14 +43,11 @@ public class Inventory {
     }
     //---------------------------------------------------------------------
 
-    /* Loads the inventory and purchase history. Shows an error if the purchase
-    *  history isn't found.
-    */
     public static void loadInventory() {
         inventory = new ArrayList<Item>();
 
         try {
-            File file = new File("StoreInventory.txt");
+            File file = new File(Main.CURRENT_DIRECTORY + "\\StoreInventory.txt");
             Scanner scan = new Scanner(file);
 
             while (scan.hasNextLine()) {
@@ -77,7 +68,6 @@ public class Inventory {
         }
     }
 
-    //Updates item info.
     public static void updateInventory() {
         try {
             FileWriter writer = new FileWriter("StoreInventory.txt");
@@ -101,7 +91,6 @@ public class Inventory {
         }
     }
 
-    //Adds an item to the inventory.
     public static void addItem() {
         scan.nextLine(); // collects any garbage input
 
@@ -118,21 +107,21 @@ public class Inventory {
         inventory.add(item);
     }
 
-    //Removes an item from the inventory.
     public static void removeItem() {
         scan.nextLine(); // collects any garbage input
 
         System.out.print("Enter the name of the item to be removed: ");
         String name = scan.nextLine();
+        Item foundItem = null;
         for (Item item : inventory) { 
             if (name.equals(item.getName())) {
-                inventory.remove(item);
+                foundItem = item;
+                break;
             }
         }
-
+        if (foundItem != null) { inventory.remove(foundItem); } else { System.out.println("Item not found."); }
     }
 
-    //Edits the info of an item.
     public static void editItem() {
         scan.nextLine(); // collects any garbage input
 
@@ -158,7 +147,6 @@ public class Inventory {
         System.out.println("No such item found.");
     }
 
-    //Menu for navigating and displaying the inventory.
     public static void menu() {
         loadInventory();
         int user_input = -1;
