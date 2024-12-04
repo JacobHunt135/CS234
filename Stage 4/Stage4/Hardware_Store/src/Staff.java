@@ -1,4 +1,3 @@
-//Imports.
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -8,13 +7,9 @@ import java.util.Scanner;
         
 public class Staff {
 
-    //Initializing Scanner and ArrayList.
     public static Scanner scan = new Scanner(System.in);
     private static ArrayList<Employee> employees;
 
-    /* Two methods to display info of an eployee. One displays all employees'
-    *  information, while the other displays a specific person's information.
-    */
     //---------------------------------------------------------------------
     public static void displayInfo() {
         System.out.printf("%20s", "[NAME] | ");
@@ -41,12 +36,11 @@ public class Staff {
     }
     //---------------------------------------------------------------------
 
-    //Loads the Staff.txt file and displays an error when they're not found.
     public static void loadStaff() {
         employees = new ArrayList<Employee>();
 
         try {
-            File file = new File("Staff.txt");
+            File file = new File(Main.CURRENT_DIRECTORY + "\\Staff.txt");
             Scanner scan = new Scanner(file);
 
             while (scan.hasNextLine()) {
@@ -66,7 +60,6 @@ public class Staff {
         }
     }
 
-    //Updates the Staff.txt file with new information and displays an error when unable.
     public static void updateStaff() {
         try {
             FileWriter writer = new FileWriter("Staff.txt");
@@ -89,7 +82,6 @@ public class Staff {
         }
     }
     
-    //Adds a new employee.
     public static void addEmp() {
         if (! Main.CURRENT_PROFILE.checkAuthority(Main.AUTH_REQ_STAFF)){
             System.out.println("Insufficient Authority...");
@@ -104,11 +96,10 @@ public class Staff {
             float wage = scan.nextFloat();
     
             Employee emp = new Employee(name, position, wage);
-            employees.remove(emp);
+            employees.add(emp);
         }
     }
     
-    //Removes an existing employee.
     public static void removeEmp() {
         if (! Main.CURRENT_PROFILE.checkAuthority(Main.AUTH_REQ_STAFF)){
             System.out.println("Insufficient Authority...");
@@ -125,7 +116,6 @@ public class Staff {
         }
     }
 
-    //Edits an existing employee.
     public static void editEmp() {
         scan.nextLine(); // collects any garbage input
 
@@ -148,5 +138,75 @@ public class Staff {
         // should only run if the inputted name matches none of the employees
         System.out.println("No such employee found.");
     }
+    
+    /*
+     * options
+     * -> 
+     */
 
-}
+    public static void menu() {
+        loadStaff();
+        int user_input = -1;
+
+        /**
+         * Enter a do-while loop to always show menu options as long as we dont choose to exit.
+         */
+        do{
+            System.out.println("""
+                \n~~~Staff Menu~~~
+                1. Display Staff
+                2. Add Staff
+                3. Remove Staff
+                4. Edit Staff
+                5. Return to Main Menu
+                """);
+            
+            user_input = scan.nextInt();
+
+            switch(user_input) {
+                case 1: // display inventory / stock menu
+                    displayInfo();
+                    break;
+                case 2: // add item
+                    addEmp();
+                    break;
+                case 3: // remove item
+                    removeEmp();
+                    break;
+                case 4: // edit item
+                    editEmp();
+                    break;
+                case 5: // back to store menu
+                    // scan.close();
+                    System.out.println("\n<--");
+                    break;
+            }
+        } while(user_input != 5);
+        // scanner.close();
+
+        updateStaff();
+    }
+    
+    // public static boolean checkAuth(Staff aStaff, int authCompare) {
+        //Changed how the authority is checked to be simpler.
+        // return aStaff.getAuth() == authCompare;
+//        if(aStaff.getAuth() == authCompare) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+    }
+    
+    //Attempting to implement IDs since using names might cause issues.
+    // public void option1(Staff aStaff) {
+    //     Scanner IDGet = new Scanner(System.in);
+    //     System.out.println("What is the name of the person you want to check their authority: ");
+    //     int ID = IDGet.nextInt();
+        
+    //     if (ID == aStaff.getID()) {
+    //         System.out.println("The person's authority level is: " + aStaff.getAuth());
+    //     } else {
+    //         System.out.println("INVALID ID");
+    //     }
+    // }
+    
