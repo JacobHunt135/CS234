@@ -15,7 +15,15 @@ public class CoreUI extends javax.swing.JFrame {
     public CoreUI() {
         initComponents();
         
-        this.setSize(700, 420);
+        String username = Main.CURRENT_PROFILE.getUsername();
+        lblAccountName.setText(username);
+        
+        pnlInventory.setVisible(true);
+        pnlOrders.setVisible(false);
+        pnlStaff.setVisible(false);
+        pnlProfiles.setVisible(false);
+        
+        this.setSize(740, 420);
         this.setVisible(true);
     }
 
@@ -31,16 +39,16 @@ public class CoreUI extends javax.swing.JFrame {
         lblMenuName = new javax.swing.JLabel();
         lblCurrentMenu = new javax.swing.JLabel();
         pnlMenuButtons = new javax.swing.JPanel();
-        btnStore = new javax.swing.JButton();
+        btnOrders = new javax.swing.JButton();
         btnStaff = new javax.swing.JButton();
         btnProfiles = new javax.swing.JButton();
-        btnStore1 = new javax.swing.JButton();
+        btnInventory = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         btnLogout = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        lblCurrentMenu1 = new javax.swing.JLabel();
-        lblCurrentMenu2 = new javax.swing.JLabel();
+        lblCurrentAccount = new javax.swing.JLabel();
+        lblAccountName = new javax.swing.JLabel();
         pnlOrders = new javax.swing.JPanel();
         orderTableContainer = new javax.swing.JScrollPane();
         orderTable = new javax.swing.JTable();
@@ -102,6 +110,7 @@ public class CoreUI extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(700, 380));
         setSize(new java.awt.Dimension(700, 380));
         getContentPane().setLayout(null);
 
@@ -117,10 +126,10 @@ public class CoreUI extends javax.swing.JFrame {
         getContentPane().add(lblCurrentMenu);
         lblCurrentMenu.setBounds(14, 44, 98, 14);
 
-        btnStore.setText("Orders");
-        btnStore.addActionListener(new java.awt.event.ActionListener() {
+        btnOrders.setText("Orders");
+        btnOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStoreActionPerformed(evt);
+                btnOrdersActionPerformed(evt);
             }
         });
 
@@ -138,10 +147,10 @@ public class CoreUI extends javax.swing.JFrame {
             }
         });
 
-        btnStore1.setText("Inventory");
-        btnStore1.addActionListener(new java.awt.event.ActionListener() {
+        btnInventory.setText("Inventory");
+        btnInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStore1ActionPerformed(evt);
+                btnInventoryActionPerformed(evt);
             }
         });
 
@@ -152,13 +161,13 @@ public class CoreUI extends javax.swing.JFrame {
             }
         });
 
-        lblCurrentMenu1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lblCurrentMenu1.setForeground(new java.awt.Color(153, 153, 153));
-        lblCurrentMenu1.setText("[CURRENT ACCOUNT]");
+        lblCurrentAccount.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblCurrentAccount.setForeground(new java.awt.Color(153, 153, 153));
+        lblCurrentAccount.setText("[CURRENT ACCOUNT]");
 
-        lblCurrentMenu2.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lblCurrentMenu2.setForeground(new java.awt.Color(153, 153, 153));
-        lblCurrentMenu2.setText("account");
+        lblAccountName.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblAccountName.setForeground(new java.awt.Color(153, 153, 153));
+        lblAccountName.setText("account");
 
         javax.swing.GroupLayout pnlMenuButtonsLayout = new javax.swing.GroupLayout(pnlMenuButtons);
         pnlMenuButtons.setLayout(pnlMenuButtonsLayout);
@@ -167,9 +176,9 @@ public class CoreUI extends javax.swing.JFrame {
             .addGroup(pnlMenuButtonsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlMenuButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnStore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnStaff, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnStore1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                    .addComponent(btnInventory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                     .addComponent(btnProfiles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -180,8 +189,8 @@ public class CoreUI extends javax.swing.JFrame {
                             .addGroup(pnlMenuButtonsLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(pnlMenuButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCurrentMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblCurrentMenu1))))
+                                    .addComponent(lblAccountName, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCurrentAccount))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -191,19 +200,19 @@ public class CoreUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnStore1)
+                .addComponent(btnInventory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnStore)
+                .addComponent(btnOrders)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnStaff)
                 .addGap(12, 12, 12)
                 .addComponent(btnProfiles)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCurrentMenu1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(lblCurrentAccount)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCurrentMenu2)
+                .addComponent(lblAccountName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -713,21 +722,45 @@ public class CoreUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStoreActionPerformed
+    private void btnOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnStoreActionPerformed
+        pnlInventory.setVisible(false);
+        pnlOrders.setVisible(true);
+        pnlStaff.setVisible(false);
+        pnlProfiles.setVisible(false);
+        
+        lblMenuName.setText("Orders");
+    }//GEN-LAST:event_btnOrdersActionPerformed
 
     private void btnStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStaffActionPerformed
         // TODO add your handling code here:
+        pnlInventory.setVisible(false);
+        pnlOrders.setVisible(false);
+        pnlStaff.setVisible(true);
+        pnlProfiles.setVisible(false);
+        
+        lblMenuName.setText("Staff");
     }//GEN-LAST:event_btnStaffActionPerformed
 
     private void btnProfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilesActionPerformed
         // TODO add your handling code here:
+        pnlInventory.setVisible(false);
+        pnlOrders.setVisible(false);
+        pnlStaff.setVisible(false);
+        pnlProfiles.setVisible(true);
+        
+        lblMenuName.setText("Profiles");
     }//GEN-LAST:event_btnProfilesActionPerformed
 
-    private void btnStore1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStore1ActionPerformed
+    private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnStore1ActionPerformed
+        pnlInventory.setVisible(true);
+        pnlOrders.setVisible(false);
+        pnlStaff.setVisible(false);
+        pnlProfiles.setVisible(false);
+        
+        lblMenuName.setText("Inventory");
+    }//GEN-LAST:event_btnInventoryActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
@@ -774,15 +807,15 @@ public class CoreUI extends javax.swing.JFrame {
     private javax.swing.JButton btnEdit1;
     private javax.swing.JButton btnEdit2;
     private javax.swing.JButton btnEdit3;
+    private javax.swing.JButton btnInventory;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnOrders;
     private javax.swing.JButton btnProfiles;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnRemove1;
     private javax.swing.JButton btnRemove2;
     private javax.swing.JButton btnRemove3;
     private javax.swing.JButton btnStaff;
-    private javax.swing.JButton btnStore;
-    private javax.swing.JButton btnStore1;
     private javax.swing.JTable invTable;
     private javax.swing.JScrollPane invTableContainer;
     private javax.swing.JSeparator jSeparator1;
@@ -792,12 +825,12 @@ public class CoreUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl$;
     private javax.swing.JLabel lbl$1;
     private javax.swing.JLabel lbl$2;
+    private javax.swing.JLabel lblAccountName;
     private javax.swing.JLabel lblAmount;
     private javax.swing.JLabel lblAuth;
     private javax.swing.JLabel lblCost;
+    private javax.swing.JLabel lblCurrentAccount;
     private javax.swing.JLabel lblCurrentMenu;
-    private javax.swing.JLabel lblCurrentMenu1;
-    private javax.swing.JLabel lblCurrentMenu2;
     private javax.swing.JLabel lblItem;
     private javax.swing.JLabel lblLocation;
     private javax.swing.JLabel lblMenuName;
