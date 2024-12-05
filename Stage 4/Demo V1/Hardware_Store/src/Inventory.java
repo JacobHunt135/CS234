@@ -11,37 +11,6 @@ public class Inventory {
     private static ArrayList<Item> inventory;
 
     //---------------------------------------------------------------------
-    public static void displayInfo() {
-        System.out.printf("%20s", "[NAME] | ");
-        System.out.printf("%20s", "[LOCATION] | ");
-        System.out.printf("%10s", "[STOCK] | ");
-        System.out.printf("%15s", "[UNIT PRICE] |\n");
-
-        for (Item item : inventory) {
-            int stock = item.getStock();
-            int price = item.getUPrice();
-
-            System.out.printf("%20s", item.getName() + " | ");
-            System.out.printf("%20s", item.getLocation() + " | ");
-            System.out.printf("%10s", stock + " | ");
-            System.out.printf("%16s", "$" + price + " | \n");
-        }
-    }
-    public static void displayInfo(Item item) {
-        System.out.printf("%20s", "[NAME] | ");
-        System.out.printf("%20s", "[LOCATION] | ");
-        System.out.printf("%10s", "[STOCK] | ");
-        System.out.printf("%15s", "[UNIT PRICE] |\n");
-
-        int stock = item.getStock();
-        int price = item.getUPrice();
-
-        System.out.printf("%20s", item.getName() + " | ");
-        System.out.printf("%20s", item.getLocation() + " | ");
-        System.out.printf("%10s", stock + " | ");
-        System.out.printf("%16s", "$" + price + " | \n");
-    }
-    //---------------------------------------------------------------------
 
     public static void loadInventory() {
         inventory = new ArrayList<Item>();
@@ -91,27 +60,12 @@ public class Inventory {
         }
     }
 
-    public static void addItem() {
-        scan.nextLine(); // collects any garbage input
-
-        System.out.print("New item's name: ");
-        String name = scan.nextLine();
-        System.out.print("New item's store location: ");
-        String location = scan.nextLine();
-        System.out.print("New item's current stock: ");
-        int stock = scan.nextInt();
-        System.out.print("New item's unit price: ");
-        int unitPrice = scan.nextInt();
-
+    public static void addItem(String name, String location, int stock, int unitPrice) {
         Item item = new Item(name, location, stock, unitPrice);
         inventory.add(item);
     }
 
-    public static void removeItem() {
-        scan.nextLine(); // collects any garbage input
-
-        System.out.print("Enter the name of the item to be removed: ");
-        String name = scan.nextLine();
+    public static void removeItem(String name) {
         Item foundItem = null;
         for (Item item : inventory) { 
             if (name.equals(item.getName())) {
@@ -122,71 +76,18 @@ public class Inventory {
         if (foundItem != null) { inventory.remove(foundItem); } else { System.out.println("Item not found."); }
     }
 
-    public static void editItem() {
-        scan.nextLine(); // collects any garbage input
-
-        System.out.print("Enter the name of the item to edit: ");
-        String name = scan.nextLine();
+    public static void editItem(String name, String newName, String location, int stock, int unitPrice) {
         for (Item item : inventory) { 
             if (name.equals(item.getName())) {
-                displayInfo(item);
-
-                System.out.print("Set new name: ");
-                item.setName(scan.nextLine());
-                System.out.print("Set new location: ");
-                item.setLocation(scan.nextLine());
-                System.out.print("Set new stock: ");
-                item.setStock(scan.nextInt());
-                System.out.print("Set new unit price: ");
-                item.setUPrice(scan.nextInt());
+                item.setName(newName);
+                item.setLocation(location);
+                item.setStock(stock);
+                item.setUPrice(unitPrice);
                 return;
             }
         }
 
         // should only run if the inputted name matches none of the items
         System.out.println("No such item found.");
-    }
-
-    public static void menu() {
-        loadInventory();
-        int user_input = -1;
-
-        /**
-         * Enter a do-while loop to always show menu options as long as we dont choose to exit.
-         */
-        do{
-            System.out.println("""
-                \n~~~ Inventory ~~~
-                1. Display Inventory
-                2. Add Item
-                3. Remove Item
-                4. Edit Item
-                5. Return to Store menu
-                """);
-            
-            user_input = scan.nextInt();
-
-            switch(user_input) {
-                case 1: // display inventory / stock menu
-                    displayInfo();
-                    break;
-                case 2: // add item
-                    addItem();
-                    break;
-                case 3: // remove item
-                    removeItem();
-                    break;
-                case 4: // edit item
-                    editItem();
-                    break;
-                case 5: // back to store menu
-                    // scan.close();
-                    System.out.println("\n<--");
-                    break;
-            }
-        } while(user_input != 5);
-        // scanner.close();
-
-        updateInventory();
     }
 }
