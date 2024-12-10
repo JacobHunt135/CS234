@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import javax.swing.JTable;
+
 /**
  *
  * @author trons
@@ -121,6 +123,7 @@ public class CoreUI extends javax.swing.JFrame {
         btnRemove = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        lblName2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 380));
@@ -264,6 +267,12 @@ public class CoreUI extends javax.swing.JFrame {
         });
         orderTableContainer.setViewportView(orderTable);
 
+        txtItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtItemActionPerformed(evt);
+            }
+        });
+
         lblItem.setText("ITEM PURCHASED");
 
         lblAmount.setText("AMOUNT PURCHASED");
@@ -275,8 +284,18 @@ public class CoreUI extends javax.swing.JFrame {
         lbl$2.setText("$");
 
         btnAdd3.setText("Add");
+        btnAdd3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdd3ActionPerformed(evt);
+            }
+        });
 
         btnRemove3.setText("Remove");
+        btnRemove3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemove3ActionPerformed(evt);
+            }
+        });
 
         btnEdit3.setText("Edit");
         btnEdit3.addActionListener(new java.awt.event.ActionListener() {
@@ -604,6 +623,22 @@ public class CoreUI extends javax.swing.JFrame {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -625,6 +660,17 @@ public class CoreUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        invTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        invTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        invTable.setShowHorizontalLines(true);
+        invTable.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                invTableFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                invTableFocusLost(evt);
+            }
+        });
         invTableContainer.setViewportView(invTable);
         if (invTable.getColumnModel().getColumnCount() > 0) {
             invTable.getColumnModel().getColumn(0).setResizable(false);
@@ -641,15 +687,34 @@ public class CoreUI extends javax.swing.JFrame {
 
         lblPrice.setText("UNIT PRICE");
 
+        spnStock.setModel(new javax.swing.SpinnerNumberModel());
+
+        spnPrice.setModel(new javax.swing.SpinnerNumberModel(0.0f, null, null, 0.5f));
+
         lbl$.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl$.setForeground(new java.awt.Color(153, 153, 153));
         lbl$.setText("$");
 
-        btnAdd.setText("Add");
+        btnAdd.setText("Set");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
-        btnRemove.setText("Remove");
+        btnRemove.setText("Clear");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -658,22 +723,24 @@ public class CoreUI extends javax.swing.JFrame {
             }
         });
 
+        lblName2.setText("Select a row to SET or CLEAR an item");
+
         javax.swing.GroupLayout pnlInventoryLayout = new javax.swing.GroupLayout(pnlInventory);
         pnlInventory.setLayout(pnlInventoryLayout);
         pnlInventoryLayout.setHorizontalGroup(
             pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlInventoryLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addGroup(pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtLocation)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblName2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlInventoryLayout.createSequentialGroup()
                         .addGroup(pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtLocation)
+                                .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
                             .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblStock, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -682,7 +749,8 @@ public class CoreUI extends javax.swing.JFrame {
                             .addGroup(pnlInventoryLayout.createSequentialGroup()
                                 .addComponent(spnPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl$, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(lbl$, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInventoryLayout.createSequentialGroup()
@@ -721,6 +789,8 @@ public class CoreUI extends javax.swing.JFrame {
                             .addComponent(spnPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl$))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblName2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAdd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRemove)
@@ -730,7 +800,7 @@ public class CoreUI extends javax.swing.JFrame {
         );
 
         getContentPane().add(pnlInventory);
-        pnlInventory.setBounds(150, 6, 550, 368);
+        pnlInventory.setBounds(150, 6, 569, 368);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -773,6 +843,7 @@ public class CoreUI extends javax.swing.JFrame {
         pnlProfiles.setVisible(false);
         
         lblMenuName.setText("Inventory");
+        System.out.println("debug");
     }//GEN-LAST:event_btnInventoryActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -781,9 +852,6 @@ public class CoreUI extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnEdit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdit1ActionPerformed
         // TODO add your handling code here:
@@ -802,12 +870,96 @@ public class CoreUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDelete2ActionPerformed
 
     private void btnEdit3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdit3ActionPerformed
-        // TODO add your handling code here:
+        // 
     }//GEN-LAST:event_btnEdit3ActionPerformed
 
     private void btnDelete3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete3ActionPerformed
-        // TODO add your handling code here:
+        // 
     }//GEN-LAST:event_btnDelete3ActionPerformed
+
+    private void txtItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtItemActionPerformed
+
+    private void btnAdd3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd3ActionPerformed
+        //  
+    }//GEN-LAST:event_btnAdd3ActionPerformed
+
+    private void btnRemove3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemove3ActionPerformed
+        // 
+    }//GEN-LAST:event_btnRemove3ActionPerformed
+
+    // INVENTORY BUTTONS
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // add to inventory
+        /*
+         * on press, first validate is the information added is fine. if so, add this information to the inventory
+         */
+        // System.out.println(invTable.getValueAt(invTable.getSelectedRow(), invTable.getSelectedColumn()));
+        
+        String itemName = txtName.getText();
+        String itemLocation = txtLocation.getText();
+        int itemStock = (int)(spnStock.getValue());
+        float itemPrice = (float)(spnPrice.getValue());
+        
+        
+        invTable.setValueAt(itemName, invTable.getSelectedRow(), 0); // item
+        invTable.setValueAt(itemLocation, invTable.getSelectedRow(), 1); // location
+        invTable.setValueAt(itemStock, invTable.getSelectedRow(), 2); // stock
+        invTable.setValueAt(itemPrice, invTable.getSelectedRow(), 3); // price
+        System.out.println("values: "+txtName.getText()+" "+txtLocation.getText()+" "+spnStock.getValue()+" $"+spnPrice.getValue());
+
+
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        // remove from inventory
+        /*
+         * Small design issue with this. Which should we remove when we press this? There is no clear visual indicator
+         */
+        System.out.println("Remove from inventory");
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // edit current
+        /*
+         * Same issue as with the remove button. There is no visual indicator to the user as to which entry will be edited when pressed.
+         * When pressed, update the currently selected entry
+         */
+        System.out.println("Edit inventory entry");
+    }//GEN-LAST:event_btnEditActionPerformed
+    
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // delete?
+        System.out.println("Deleted entry from inventory");
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void invTableFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_invTableFocusGained
+        // enable context buttons if an entry is selected
+        activateInventoryContextButtons();
+    }//GEN-LAST:event_invTableFocusGained
+
+    private void invTableFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_invTableFocusLost
+        // disable context buttons
+        deactivateInventoryContextButtons();
+    }//GEN-LAST:event_invTableFocusLost
+
+    private void activateInventoryContextButtons(){
+        btnRemove.setEnabled(true);
+        btnEdit.setEnabled(true);
+        btnAdd.setEnabled(true);
+    }
+
+    private void deactivateInventoryContextButtons(){
+        if (invTable.getSelectedRow() != -1){
+            return;
+        }
+        btnRemove.setEnabled(false);
+        btnEdit.setEnabled(false);
+        btnAdd.setEnabled(false);
+    }
+
+    // ---
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -851,6 +1003,7 @@ public class CoreUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblMenuName;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblName1;
+    private javax.swing.JLabel lblName2;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPosition;
     private javax.swing.JLabel lblPrice;

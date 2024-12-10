@@ -39,6 +39,7 @@ public class LoginUI extends javax.swing.JFrame {
         lblUsername.setText("Username");
 
         txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPassword.setText("Admin");
         txtPassword.setOpaque(true);
         txtPassword.setPreferredSize(new java.awt.Dimension(112, 24));
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -51,6 +52,7 @@ public class LoginUI extends javax.swing.JFrame {
         lblPassword.setText("Password");
 
         txtUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUsername.setText("ADMINISTRATOR");
         txtUsername.setOpaque(true);
         txtUsername.setPreferredSize(new java.awt.Dimension(112, 24));
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
