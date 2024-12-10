@@ -4,6 +4,7 @@
  */
 
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -122,8 +123,6 @@ public class CoreUI extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        lblName2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 380));
@@ -620,26 +619,7 @@ public class CoreUI extends javax.swing.JFrame {
 
         invTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Name", "Location", "Stock", "Unit Price"
@@ -695,14 +675,14 @@ public class CoreUI extends javax.swing.JFrame {
         lbl$.setForeground(new java.awt.Color(153, 153, 153));
         lbl$.setText("$");
 
-        btnAdd.setText("Set");
+        btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
 
-        btnRemove.setText("Clear");
+        btnRemove.setText("Remove");
         btnRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveActionPerformed(evt);
@@ -716,15 +696,6 @@ public class CoreUI extends javax.swing.JFrame {
             }
         });
 
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-
-        lblName2.setText("Select a row to SET or CLEAR an item");
-
         javax.swing.GroupLayout pnlInventoryLayout = new javax.swing.GroupLayout(pnlInventory);
         pnlInventory.setLayout(pnlInventoryLayout);
         pnlInventoryLayout.setHorizontalGroup(
@@ -734,7 +705,6 @@ public class CoreUI extends javax.swing.JFrame {
                 .addGroup(pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblName2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlInventoryLayout.createSequentialGroup()
                         .addGroup(pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -750,15 +720,10 @@ public class CoreUI extends javax.swing.JFrame {
                                 .addComponent(spnPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbl$, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 29, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addGroup(pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInventoryLayout.createSequentialGroup()
-                        .addComponent(invTableContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInventoryLayout.createSequentialGroup()
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124))))
+                .addComponent(invTableContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlInventoryLayout.setVerticalGroup(
             pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -767,9 +732,7 @@ public class CoreUI extends javax.swing.JFrame {
                 .addGroup(pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlInventoryLayout.createSequentialGroup()
                         .addComponent(invTableContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDelete)
-                        .addContainerGap(13, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlInventoryLayout.createSequentialGroup()
                         .addComponent(lblName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -788,9 +751,7 @@ public class CoreUI extends javax.swing.JFrame {
                         .addGroup(pnlInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(spnPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl$))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblName2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(btnAdd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRemove)
@@ -800,7 +761,7 @@ public class CoreUI extends javax.swing.JFrame {
         );
 
         getContentPane().add(pnlInventory);
-        pnlInventory.setBounds(150, 6, 569, 368);
+        pnlInventory.setBounds(150, 6, 579, 368);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -891,11 +852,6 @@ public class CoreUI extends javax.swing.JFrame {
 
     // INVENTORY BUTTONS
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // add to inventory
-        /*
-         * on press, first validate is the information added is fine. if so, add this information to the inventory
-         */
-        // System.out.println(invTable.getValueAt(invTable.getSelectedRow(), invTable.getSelectedColumn()));
         
         String itemName = txtName.getText();
         String itemLocation = txtLocation.getText();
@@ -903,61 +859,44 @@ public class CoreUI extends javax.swing.JFrame {
         float itemPrice = (float)(spnPrice.getValue());
         
         
-        invTable.setValueAt(itemName, invTable.getSelectedRow(), 0); // item
-        invTable.setValueAt(itemLocation, invTable.getSelectedRow(), 1); // location
-        invTable.setValueAt(itemStock, invTable.getSelectedRow(), 2); // stock
-        invTable.setValueAt(itemPrice, invTable.getSelectedRow(), 3); // price
-        System.out.println("values: "+txtName.getText()+" "+txtLocation.getText()+" "+spnStock.getValue()+" $"+spnPrice.getValue());
-
+        if ((itemName.equals("")) || (itemLocation.equals(""))){
+            return;
+        }
+        
+        
+        DefaultTableModel model = (DefaultTableModel) invTable.getModel();
+        model.addRow(new Object[]{itemName,itemLocation,itemStock,itemPrice});
+        
 
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        // remove from inventory
-        /*
-         * Small design issue with this. Which should we remove when we press this? There is no clear visual indicator
-         */
-        System.out.println("Remove from inventory");
+        DefaultTableModel model = (DefaultTableModel) invTable.getModel();
+        try {
+            model.removeRow(invTable.getSelectedRow());
+        } catch (Exception e) {
+            return;
+        }
     }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // edit current
-        /*
-         * Same issue as with the remove button. There is no visual indicator to the user as to which entry will be edited when pressed.
-         * When pressed, update the currently selected entry
-         */
-        System.out.println("Edit inventory entry");
-    }//GEN-LAST:event_btnEditActionPerformed
-    
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // delete?
-        System.out.println("Deleted entry from inventory");
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void invTableFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_invTableFocusGained
-        // enable context buttons if an entry is selected
-        activateInventoryContextButtons();
-    }//GEN-LAST:event_invTableFocusGained
-
-    private void invTableFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_invTableFocusLost
-        // disable context buttons
-        deactivateInventoryContextButtons();
-    }//GEN-LAST:event_invTableFocusLost
-
-    private void activateInventoryContextButtons(){
-        btnRemove.setEnabled(true);
-        btnEdit.setEnabled(true);
-        btnAdd.setEnabled(true);
-    }
-
-    private void deactivateInventoryContextButtons(){
-        if (invTable.getSelectedRow() != -1){
+        String itemName = txtName.getText();
+        String itemLocation = txtLocation.getText();
+        int itemStock = (int)(spnStock.getValue());
+        float itemPrice = (float)(spnPrice.getValue());
+        
+        
+        if ((itemName.equals("")) || (itemLocation.equals(""))){
             return;
         }
-        btnRemove.setEnabled(false);
-        btnEdit.setEnabled(false);
-        btnAdd.setEnabled(false);
-    }
+        
+        invTable.setValueAt(itemName,invTable.getSelectedRow(),0);
+        invTable.setValueAt(itemLocation,invTable.getSelectedRow(),1);
+        invTable.setValueAt(itemStock,invTable.getSelectedRow(),2);
+        invTable.setValueAt(itemPrice,invTable.getSelectedRow(),3);
+
+    }//GEN-LAST:event_btnEditActionPerformed
+    
 
     // ---
 
@@ -966,7 +905,6 @@ public class CoreUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd1;
     private javax.swing.JButton btnAdd2;
     private javax.swing.JButton btnAdd3;
-    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDelete1;
     private javax.swing.JButton btnDelete2;
     private javax.swing.JButton btnDelete3;
@@ -1003,7 +941,6 @@ public class CoreUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblMenuName;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblName1;
-    private javax.swing.JLabel lblName2;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPosition;
     private javax.swing.JLabel lblPrice;
