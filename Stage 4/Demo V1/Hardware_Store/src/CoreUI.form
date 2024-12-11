@@ -230,10 +230,7 @@
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnDelete3" alignment="0" pref="106" max="32767" attributes="0"/>
-                      <Component id="orderTableContainer" alignment="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="orderTableContainer" min="-2" pref="106" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="orderInfo" min="-2" pref="199" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -270,9 +267,7 @@
                       <Component id="orderInfo" alignment="0" pref="292" max="32767" attributes="0"/>
                       <Component id="orderTableContainer" alignment="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnDelete3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="12" max="32767" attributes="0"/>
+                  <EmptySpace pref="53" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -292,10 +287,23 @@
                     <Column editable="false" title="Orders" type="java.lang.String"/>
                   </Table>
                 </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
+                </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="orderTableFocusGained"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="orderTableMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -358,14 +366,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEdit3ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnDelete3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Delete"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDelete3ActionPerformed"/>
-          </Events>
-        </Component>
         <Container class="javax.swing.JScrollPane" name="orderInfo">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -375,13 +375,15 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="jTextArea1">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="[[ ORDER 1 ]]&#xa;DATE: &#xa;8/7/24&#xa;PURCHASE OF: &#xa;&quot;Screwdriver&quot;&#xa;AMOUNT: 44&#xa;COST: &#xa;$22000&#xa;BY USER: &#xa;joseju"/>
+                <Property name="text" type="java.lang.String" value="[ Select an Order ]"/>
+                <Property name="wrapStyleWord" type="boolean" value="true"/>
                 <Property name="alignmentX" type="float" value="1.0"/>
                 <Property name="alignmentY" type="float" value="1.0"/>
               </Properties>

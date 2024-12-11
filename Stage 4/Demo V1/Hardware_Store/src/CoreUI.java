@@ -32,6 +32,10 @@ public class CoreUI extends javax.swing.JFrame {
         
         this.setSize(740, 420);
         this.setVisible(true);
+
+
+        // update the order display on entry
+        updateOrderDisplay();
     }
     
     @Override
@@ -78,7 +82,6 @@ public class CoreUI extends javax.swing.JFrame {
         btnAdd3 = new javax.swing.JButton();
         btnRemove3 = new javax.swing.JButton();
         btnEdit3 = new javax.swing.JButton();
-        btnDelete3 = new javax.swing.JButton();
         orderInfo = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         pnlProfiles = new javax.swing.JPanel();
@@ -264,6 +267,16 @@ public class CoreUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        orderTable.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                orderTableFocusGained(evt);
+            }
+        });
+        orderTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                orderTableMouseClicked(evt);
+            }
+        });
         orderTableContainer.setViewportView(orderTable);
 
         txtItem.addActionListener(new java.awt.event.ActionListener() {
@@ -303,18 +316,13 @@ public class CoreUI extends javax.swing.JFrame {
             }
         });
 
-        btnDelete3.setText("Delete");
-        btnDelete3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDelete3ActionPerformed(evt);
-            }
-        });
-
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("[[ ORDER 1 ]]\nDATE: \n8/7/24\nPURCHASE OF: \n\"Screwdriver\"\nAMOUNT: 44\nCOST: \n$22000\nBY USER: \njoseju");
+        jTextArea1.setText("[ Select an Order ]");
+        jTextArea1.setWrapStyleWord(true);
         jTextArea1.setAlignmentX(1.0F);
         jTextArea1.setAlignmentY(1.0F);
         orderInfo.setViewportView(jTextArea1);
@@ -341,9 +349,7 @@ public class CoreUI extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(lbl$2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addGroup(pnlOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnDelete3, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                    .addComponent(orderTableContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(orderTableContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(orderInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -375,9 +381,7 @@ public class CoreUI extends javax.swing.JFrame {
                         .addComponent(btnEdit3))
                     .addComponent(orderInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                     .addComponent(orderTableContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(btnDelete3)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlOrders);
@@ -831,23 +835,35 @@ public class CoreUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDelete2ActionPerformed
 
     private void btnEdit3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdit3ActionPerformed
-        // 
+        // edit order
+        System.out.println("Editing order");
     }//GEN-LAST:event_btnEdit3ActionPerformed
-
-    private void btnDelete3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete3ActionPerformed
-        // 
-    }//GEN-LAST:event_btnDelete3ActionPerformed
 
     private void txtItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtItemActionPerformed
 
     private void btnAdd3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd3ActionPerformed
-        //  
+        //  add order
+        /*
+         * item name
+         * amount
+         * price
+         * -- automatically 
+         */
+        String itemName = txtItem.getText();
+        int itemAmount = (int)spnAmount.getValue();
+        int itemPrice = (int)spnCost.getValue();
+
+        Purchase.makeOrder(itemName,itemAmount,itemPrice);
+
+        updateOrderDisplay();
     }//GEN-LAST:event_btnAdd3ActionPerformed
 
     private void btnRemove3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemove3ActionPerformed
-        // 
+        // remove order
+        Purchase.getPurchaseHistory().remove(orderTable.getSelectedRow());
+        updateOrderDisplay();
     }//GEN-LAST:event_btnRemove3ActionPerformed
 
     // INVENTORY BUTTONS
@@ -896,7 +912,36 @@ public class CoreUI extends javax.swing.JFrame {
         invTable.setValueAt(itemPrice,invTable.getSelectedRow(),3);
 
     }//GEN-LAST:event_btnEditActionPerformed
-    
+
+    // update the info box when clicking on an order
+    private void orderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderTableMouseClicked
+        Object value = orderTable.getValueAt(orderTable.getSelectedRow(),orderTable.getSelectedColumn());
+        System.out.println(value);
+        // i feel like this line MAY be a bit volatile.. i dunno.... i expect it to break in some way, but it works.
+        Purchase p = Purchase.getPurchaseHistory().get(orderTable.getSelectedRow());
+        jTextArea1.setText(
+            "=== ORDER ===\nID :"+p.getID()+"\nDate: "+p.getDate()+"\nItem: "+p.getItem()+"\nAmount: "+p.getAmount()+"\nCost: "+p.getCost()+"\nUser: "+p.getUser());
+    }//GEN-LAST:event_orderTableMouseClicked
+
+
+    private void updateOrderDisplay(){
+        int pSize = Purchase.getPurchaseHistory().size();
+
+        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
+        
+        // clear out the current rows
+        while(model.getRowCount() > 0){
+            model.removeRow(0);
+        }
+        
+        // display all orders
+        for(int i = 0; i < pSize; i ++){
+            Purchase p = Purchase.getPurchaseHistory().get(i);
+            model.addRow(new Object[]{p.getID()+" | "+p.getDate()});
+            System.out.println("Order: "+p.getItem());
+        }
+        
+    }
 
     // ---
 
@@ -907,7 +952,6 @@ public class CoreUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd3;
     private javax.swing.JButton btnDelete1;
     private javax.swing.JButton btnDelete2;
-    private javax.swing.JButton btnDelete3;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEdit1;
     private javax.swing.JButton btnEdit2;

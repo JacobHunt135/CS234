@@ -108,7 +108,7 @@ public class Purchase {
             e.printStackTrace();
         }
     }
-
+    
     public static void updatePurchases() {
         try {
             FileWriter writer = new FileWriter("PurchaseHistory.txt");
@@ -134,6 +134,10 @@ public class Purchase {
         }
     }
 
+    public static LinkedList<Purchase> getPurchaseHistory(){
+        return purchaseHistory;
+    }
+
     public static void readPrev() {
         if (iterator.hasPrevious()) {
             currentPurchase = iterator.previous();
@@ -153,13 +157,15 @@ public class Purchase {
     }
 
     public static void makeOrder(String item, int amount, int cost) {
-        scan.nextLine(); // collects any garbage input
+        // scan.nextLine(); // collects any garbage input 
+        // The above line freezes the GUI :(
 
         int id = MAX_ID + 1;
         String user = Main.CURRENT_PROFILE.getUsername();
         String date = LocalDate.now().toString();
 
-        purchaseHistory.add(new Purchase(id, user, date, item, amount, cost));
+        Purchase p = new Purchase(id, user, date, item, amount, cost);
+        purchaseHistory.add(p);
         iterator = purchaseHistory.listIterator();
     }
 
@@ -170,6 +176,11 @@ public class Purchase {
         } else {
             System.out.println("No current purchase to remove.");
         }
+    }
+
+    public static void removeOrder(Purchase p){
+        // shouldnt need any error checking?
+        purchaseHistory.remove(p);
     }
 
     public static void editOrder(String itemName, int amount, int cost) {
