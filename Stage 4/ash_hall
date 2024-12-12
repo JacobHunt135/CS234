@@ -1,0 +1,3 @@
+- Small revision to the Purchase class to assist with the Orders GUI implementation
+- Mainly worked on getting the Inventory and Orders menu working with the GUI
+- Will be presenting the final project
