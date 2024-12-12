@@ -24,7 +24,7 @@ public class Main  {
     public static final int ADMIN_AUTH_LEVEL = 0;
     //---------------------------------------------------------------
 
-    private static LinkedList<Profile> profiles = new LinkedList<Profile>();
+    public static LinkedList<Profile> profiles = new LinkedList<Profile>();
     
     public static void loadProfiles() {
         try {
@@ -132,9 +132,6 @@ public class Main  {
         System.out.println("current dir = " + dir);
 
         loadProfiles();
-        Staff.loadStaff();
-        Purchase.loadPurchases();
-        Inventory.loadInventory();
         
         //---------------------------------------------------------------------
         java.awt.EventQueue.invokeLater(new Runnable() {

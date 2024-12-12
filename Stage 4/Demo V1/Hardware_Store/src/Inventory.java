@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Inventory {
 
     public static Scanner scan = new Scanner(System.in);
-    private static ArrayList<Item> inventory;
+    public static ArrayList<Item> inventory;
 
     //---------------------------------------------------------------------
 

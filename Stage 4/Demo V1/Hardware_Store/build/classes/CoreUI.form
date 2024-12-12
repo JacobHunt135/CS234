@@ -210,24 +210,32 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace pref="173" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtItem" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
-                      <Component id="lblItem" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                      <Component id="spnAmount" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                      <Component id="lblAmount" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblCost" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="btnEdit3" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                              <Component id="btnRemove3" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                              <Component id="btnAdd3" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtItem" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                          <Component id="spnAmount" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
+                          <Component id="lblAmount" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCost" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="btnEdit3" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                                  <Component id="btnRemove3" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                                  <Component id="btnAdd3" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="spnCost" min="-2" pref="85" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl$2" min="-2" pref="35" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="spnCost" min="-2" pref="85" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lbl$2" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblDate" min="-2" pref="62" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnDate" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="lblItem" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="txtDate" min="-2" pref="174" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="orderTableContainer" min="-2" pref="106" max="-2" attributes="0"/>
@@ -239,10 +247,12 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Component id="orderInfo" max="32767" attributes="0"/>
+                      <Component id="orderTableContainer" alignment="1" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
                           <Component id="lblItem" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtItem" min="-2" max="-2" attributes="0"/>
@@ -257,17 +267,22 @@
                               <Component id="spnCost" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl$2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnDate" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtDate" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Component id="btnAdd3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnRemove3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnEdit3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="orderInfo" alignment="0" pref="292" max="32767" attributes="0"/>
-                      <Component id="orderTableContainer" alignment="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                  <EmptySpace pref="10" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -283,34 +298,24 @@
             <Component class="javax.swing.JTable" name="orderTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="1" rowCount="4">
+                  <Table columnCount="1" rowCount="0">
                     <Column editable="false" title="Orders" type="java.lang.String"/>
                   </Table>
                 </Property>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                  <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                  </TableColumnModel>
+                <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
+                  <JTableSelectionModel selectionMode="0"/>
                 </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="orderTableFocusGained"/>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="orderTableMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="txtItem">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtItemActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblItem">
           <Properties>
@@ -375,21 +380,34 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="jTextArea1">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="[ Select an Order ]"/>
-                <Property name="wrapStyleWord" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="[[ ORDER 1 ]]&#xa;DATE: &#xa;8/7/24&#xa;PURCHASE OF: &#xa;&quot;Screwdriver&quot;&#xa;AMOUNT: 44&#xa;COST: &#xa;$22000&#xa;BY USER: &#xa;joseju"/>
                 <Property name="alignmentX" type="float" value="1.0"/>
                 <Property name="alignmentY" type="float" value="1.0"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JTextField" name="txtDate">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="DATE"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnDate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Current Date"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlProfiles">
@@ -406,46 +424,39 @@
                   <EmptySpace min="0" pref="182" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtUsername" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                              <Component id="lblUsername" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                              <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblAuth" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtUsername" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
-                                      <Component id="lblUsername" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                                      <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblAuth" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="btnEdit2" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                                              <Component id="btnRemove2" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                                              <Component id="btnAdd2" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="txtPassword" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                                      <Component id="btnEdit2" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Component id="btnRemove2" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Component id="btnAdd2" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="spnAuth" min="-2" pref="46" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="txtPassword" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="profileTableContainer" min="-2" pref="317" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnDelete2" min="-2" pref="106" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                          <Component id="spnAuth" min="-2" pref="46" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="profileTableContainer" min="-2" pref="317" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Component id="profileTableContainer" min="-2" pref="331" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtUsername" min="-2" max="-2" attributes="0"/>
@@ -464,11 +475,8 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnEdit2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="profileTableContainer" alignment="0" min="-2" pref="292" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btnDelete2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -484,7 +492,7 @@
             <Component class="javax.swing.JTable" name="profileTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="3" rowCount="4">
+                  <Table columnCount="3" rowCount="0">
                     <Column editable="false" title="Username" type="java.lang.String"/>
                     <Column editable="false" title="Password" type="java.lang.String"/>
                     <Column editable="false" title="Authority" type="java.lang.Integer"/>
@@ -520,11 +528,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Add"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdd2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnRemove2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Remove"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemove2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEdit2">
           <Properties>
@@ -532,14 +546,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEdit2ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnDelete2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Delete"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDelete2ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPassword">
@@ -559,46 +565,39 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="171" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtName1" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
-                              <Component id="lblName1" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                              <Component id="lblPosition" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblWage" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="btnEdit1" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                                      <Component id="btnRemove1" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                                      <Component id="btnAdd1" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="spnWage" min="-2" pref="85" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lbl$1" min="-2" pref="35" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="txtPosition" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                      <Component id="txtStaffName" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                      <Component id="lblStaffName" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                      <Component id="lblPosition" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblWage" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Component id="btnEdit1" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                              <Component id="btnRemove1" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                              <Component id="btnAdd1" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="staffTableContainer" min="-2" pref="317" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="spnWage" min="-2" pref="85" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl$1" min="-2" pref="35" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnDelete1" min="-2" pref="106" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="txtPosition" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="staffTableContainer" min="-2" pref="317" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblName1" min="-2" max="-2" attributes="0"/>
+                      <Component id="staffTableContainer" min="-2" pref="330" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="lblStaffName" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtName1" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtStaffName" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblPosition" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -617,11 +616,8 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnEdit1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="staffTableContainer" alignment="0" min="-2" pref="292" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btnDelete1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace pref="15" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -637,7 +633,7 @@
             <Component class="javax.swing.JTable" name="staffTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="3" rowCount="4">
+                  <Table columnCount="3" rowCount="0">
                     <Column editable="false" title="Name" type="java.lang.String"/>
                     <Column editable="false" title="Location" type="java.lang.String"/>
                     <Column editable="false" title="Wage" type="java.lang.Float"/>
@@ -650,9 +646,9 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="txtName1">
+        <Component class="javax.swing.JTextField" name="txtStaffName">
         </Component>
-        <Component class="javax.swing.JLabel" name="lblName1">
+        <Component class="javax.swing.JLabel" name="lblStaffName">
           <Properties>
             <Property name="text" type="java.lang.String" value="EMPLOYEE NAME"/>
           </Properties>
@@ -684,11 +680,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Add"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdd1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnRemove1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Remove"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemove1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEdit1">
           <Properties>
@@ -696,14 +698,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEdit1ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnDelete1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Delete"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDelete1ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPosition">
@@ -721,17 +715,19 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnAdd" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnRemove" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnEdit" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtLocation" max="32767" attributes="0"/>
-                                  <Component id="txtName" pref="174" max="32767" attributes="0"/>
-                              </Group>
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtLocation" max="32767" attributes="0"/>
+                          <Component id="txtName" min="-2" pref="174" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btnAdd" max="32767" attributes="0"/>
+                              <Component id="btnRemove" max="32767" attributes="0"/>
+                              <Component id="btnEdit" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                               <Component id="lblName" min="-2" pref="105" max="-2" attributes="0"/>
                               <Component id="lblLocation" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
                               <Component id="lblStock" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
@@ -743,7 +739,6 @@
                                   <Component id="lbl$" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -757,11 +752,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="invTableContainer" min="-2" pref="291" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Component id="invTableContainer" min="-2" pref="329" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Component id="lblName" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtName" min="-2" max="-2" attributes="0"/>
@@ -780,15 +772,15 @@
                               <Component id="spnPrice" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl$" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="36" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnRemove" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -835,19 +827,10 @@
                     </Column>
                   </TableColumnModel>
                 </Property>
-                <Property name="selectionMode" type="int" value="0"/>
-                <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
-                  <JTableSelectionModel selectionMode="0"/>
-                </Property>
-                <Property name="showHorizontalLines" type="boolean" value="true"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="invTableFocusGained"/>
-                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="invTableFocusLost"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -876,18 +859,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="spnStock">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="spnPrice">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0.0" numberType="java.lang.Float" stepSize="0.5" type="number"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl$">
           <Properties>

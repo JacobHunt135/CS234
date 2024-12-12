@@ -38,6 +38,10 @@ public class Purchase {
     public void setCost(int cost) {
         this.cost = cost;
     }
+    
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public void displayInfo() {
         System.out.printf(
@@ -72,9 +76,7 @@ public class Purchase {
 
 
 
-    private static LinkedList<Purchase> purchaseHistory = new LinkedList<Purchase>();
-    private static ListIterator<Purchase> iterator;
-    private static Purchase currentPurchase;
+    public static LinkedList<Purchase> purchaseHistory = new LinkedList<Purchase>();
     private static int MAX_ID = 1;
 
     public static Scanner scan = new Scanner(System.in);
@@ -101,14 +103,12 @@ public class Purchase {
                 }
             }
             scan.close();
-
-            iterator = purchaseHistory.listIterator();
         } catch (FileNotFoundException e) {
             System.out.println("Purchase history not found.");
             e.printStackTrace();
         }
     }
-    
+
     public static void updatePurchases() {
         try {
             FileWriter writer = new FileWriter("PurchaseHistory.txt");
@@ -134,65 +134,26 @@ public class Purchase {
         }
     }
 
-    public static LinkedList<Purchase> getPurchaseHistory(){
-        return purchaseHistory;
-    }
-
-    public static void readPrev() {
-        if (iterator.hasPrevious()) {
-            currentPurchase = iterator.previous();
-            currentPurchase.displayInfo();
-        } else {
-            System.out.println("Reached beginning of purchase history.");
-        }
-    }
-
-    public static void readNext() {
-        if (iterator.hasNext()) {
-            currentPurchase = iterator.next();
-            currentPurchase.displayInfo();
-        } else {
-            System.out.println("Reached end of purchase history.");
-        }
-    }
-
-    public static void makeOrder(String item, int amount, int cost) {
-        // scan.nextLine(); // collects any garbage input 
-        // The above line freezes the GUI :(
-
+    public static void makeOrder(String item, int amount, int cost, String date) {
         int id = MAX_ID + 1;
         String user = Main.CURRENT_PROFILE.getUsername();
-        String date = LocalDate.now().toString();
 
-        Purchase p = new Purchase(id, user, date, item, amount, cost);
-        purchaseHistory.add(p);
-        iterator = purchaseHistory.listIterator();
+        purchaseHistory.add(new Purchase(id, user, date, item, amount, cost));
     }
 
-    public static void removeOrder() {
-        if (currentPurchase != null) {
-            purchaseHistory.remove(currentPurchase);
-            iterator = purchaseHistory.listIterator();
-        } else {
-            System.out.println("No current purchase to remove.");
-        }
+    public static void removeOrder(int ID) {
+        //purchaseHistory.remove(currentPurchase);
     }
 
-    public static void removeOrder(Purchase p){
-        // shouldnt need any error checking?
-        purchaseHistory.remove(p);
-    }
-
-    public static void editOrder(String itemName, int amount, int cost) {
-        if (currentPurchase != null) {
-            currentPurchase.setItem(itemName);
-            currentPurchase.setAmount(amount);
-            currentPurchase.setCost(cost);
-    
-            iterator = purchaseHistory.listIterator();
-        } else {
-            // should only run if the inputted name matches none of the items
-            System.out.println("No current order to edit.");
+    public static void editOrder(int selectedID, String itemName, int amount, int cost, String date) {
+        for (Purchase aPurchase : purchaseHistory) {
+            if (selectedID == aPurchase.getID()) {
+                aPurchase.setItem(itemName);
+                aPurchase.setAmount(amount);
+                aPurchase.setCost(cost);
+                aPurchase.setDate(date);
+                break;
+            }
         }
     }
 }

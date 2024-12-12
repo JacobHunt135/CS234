@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Staff {
 
     public static Scanner scan = new Scanner(System.in);
-    private static ArrayList<Employee> employees;
+    public static ArrayList<Employee> employees;
 
     //---------------------------------------------------------------------
 
@@ -71,10 +71,16 @@ public class Staff {
         if (! Main.CURRENT_PROFILE.checkAuthority(Main.AUTH_REQ_STAFF)){
             System.out.println("Insufficient Authority...");
         } else {
+            Employee foundEmp = null;
             for (Employee emp : employees) { 
                 if (name.equals(emp.getName())) {
-                    employees.remove(emp);
+                    foundEmp = emp;
+                    break;
                 }
+            }
+            
+            if (foundEmp != null) {
+                employees.remove(foundEmp);
             }
         }
     }
