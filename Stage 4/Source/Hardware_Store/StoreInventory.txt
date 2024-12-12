@@ -1,0 +1,8 @@
+Wrench, Shelf A3, 17, 3, 
+Screwdriver, Shelf A2, 1, 14, 
+Tape, Shelf C3, 6, 2, 
+Bolts, Shelf D6, 300, 1, 
+Sink, Warehouse 3, 80, 10, 
+Paper, Shelf A3, 600, 6, 
+Jackhammer, Warehouse 1, 10, 7000, 
+Joe Momma, Joe House, 11, 1, 

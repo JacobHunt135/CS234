@@ -1,0 +1,3 @@
+ADMINISTRATOR, Admin, 0
+benson, password, 1
+joseju, swanson, 3
