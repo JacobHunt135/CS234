@@ -1,0 +1,5 @@
+- largely responsible for overall UI design
+- implementation of old CMD-interfaced class methods
+- implementation of file read / write and information display for each menu
+- handling of login system
+- full implementation of staff / profile menus and associated authority checks
