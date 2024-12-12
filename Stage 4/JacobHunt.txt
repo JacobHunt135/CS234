@@ -1,0 +1,4 @@
+- Made a minor change to all the GUIs - removed unnecessary "delete" button when there already was a "remove" button
+- Assigned to work on Profiles and Staff GUIs
+- Forgot to commit regularly, computer crashed (Still troubleshooting), developed a deep understanding of how Adobe users feel when they forget to regularly save their progress on unstable software
+- Created user guide
